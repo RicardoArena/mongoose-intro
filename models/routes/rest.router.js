@@ -38,4 +38,35 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+router.patch("/edit/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const editedRest = await restModel.findOneAndUpdate(
+      { _id: id },
+      { ...req.body },
+      { new: true }
+    );
+
+    return res.status(200).json(editedRest);
+  } catch (err) {
+    console.error(err);
+
+    return res.status(500).json(err);
+  }
+});
+
+router.delete("/delete/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const deletedRest = await restModel.deleteOne({ _id: id });
+
+    return res.status(200).json(deletedRest);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json(err);
+  }
+});
+
 module.exports = router;
