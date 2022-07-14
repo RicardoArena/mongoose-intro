@@ -1,4 +1,6 @@
 const router = require("express").Router();
+// const { response } = require("express");
+// const { STATES } = require("mongoose");
 
 const restModel = require("../rest.model");
 
@@ -28,7 +30,7 @@ router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
 
-    const rest = await restModel.findOne({ _id: id });
+    const rest = await restModel.findOne({ _id: id }).populate("reviews");
 
     return res.status(200).json(rest);
   } catch (err) {

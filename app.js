@@ -11,6 +11,9 @@ dbConnect();
 const restRouter = require("./models/routes/rest.router");
 app.use("/rest", restRouter);
 
+const reviewRouter = require("./models/routes/review.router");
+app.use("/review", reviewRouter);
+
 app.listen(Number(process.env.PORT), () => {
   console.log(`Server up and runing at port ${process.env.PORT}`);
 });
