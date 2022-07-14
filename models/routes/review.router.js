@@ -22,16 +22,16 @@ router.post("/reviewrest/:id", async (req, res) => {
   }
 });
 
-// router.get("/all-review", async (req, res) => {
-//   try {
-//     const allReview = await reviewModel.find();
+router.get("/all-review", async (req, res) => {
+  try {
+    const allReview = await reviewModel.find();
 
-//     return res.status(200).json(allReview);
-//   } catch (err) {
-//     console.error(err);
-//     return res.status(500).json(err);
-//   }
-// });
+    return res.status(200).json(allReview);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json(err);
+  }
+});
 
 router.get("/:id", async (req, res) => {
   try {
@@ -47,35 +47,35 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// router.patch("/edit/:id", async (req, res) => {
-//   try {
-//     const { id } = req.params;
+router.patch("/edit/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
 
-//     const editedReview = await reviewModel.findOneAndUpdate(
-//       { _id: id },
-//       { ...req.body },
-//       { new: true }
-//     );
+    const editedReview = await reviewModel.findOneAndUpdate(
+      { _id: id },
+      { ...req.body },
+      { new: true }
+    );
 
-//     return res.status(200).json(editedReview);
-//   } catch (err) {
-//     console.error(err);
+    return res.status(200).json(editedReview);
+  } catch (err) {
+    console.error(err);
 
-//     return res.status(500).json(err);
-//   }
-// });
+    return res.status(500).json(err);
+  }
+});
 
-// router.delete("/delete/:id", async (req, res) => {
-//   try {
-//     const { id } = req.params;
+router.delete("/delete/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
 
-//     const deletedReview = await reviewModel.deleteOne({ _id: id });
+    const deletedReview = await reviewModel.deleteOne({ _id: id });
 
-//     return res.status(200).json(deletedReview);
-//   } catch (err) {
-//     console.error(err);
-//     return res.status(500).json(err);
-//   }
-// });
+    return res.status(200).json(deletedReview);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json(err);
+  }
+});
 
 module.exports = router;
